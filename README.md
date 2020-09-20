@@ -1,6 +1,8 @@
 # YoutubeSearchApi.Net
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/madeyoga/YoutubeSearchApi/issues)
-[![Discord Badge](https://discordapp.com/api/guilds/458296099049046018/embed.png)](https://discord.gg/Y8sB4ay)
+![CodeFactor](https://www.codefactor.io/repository/github/madeyoga/youtubesearchapi/badge/master)
+![NugetBadge](https://img.shields.io/nuget/v/YoutubeSearchApi)
+[![contributionswelcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/madeyoga/YoutubeSearchApi/issues)
+[![DiscordBadge](https://discordapp.com/api/guilds/458296099049046018/embed.png)](https://discord.gg/Y8sB4ay)
 
 A lightweight &amp; simple .NET library to extract data from Youtube Data API v3 (WebScraping, in development). 
 The purpose of this project is to make it easier for developers to extract data from YouTube.
