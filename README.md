@@ -14,7 +14,7 @@ The purpose of this project is to make it easier for developers to extract data 
 ## Installation
 
 ### NuGet
-*Wait for the upcoming release*
+- [YoutubeSearchAPI](https://www.nuget.org/packages/YoutubeSearchAPI/)
 
 ## Compiling
 In order to compile YoutubeSearchApi.Net, you require the following:
