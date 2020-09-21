@@ -17,7 +17,7 @@ The purpose of this project is to make it easier for developers to extract data 
 - [YoutubeSearchAPI](https://www.nuget.org/packages/YoutubeSearchAPI/)
 
 ## Compiling
-In order to compile YoutubeSearchApi.Net, you require the following:
+In order to compile YoutubeSearchApi, you require the following:
 
 ### Using Visual Studio
 - [Visual Studio 2019](https://dotnet.microsoft.com/download#windowsvs2019)
@@ -42,7 +42,6 @@ namespace Test
     { 
         static async System.Threading.Tasks.Task Main(string[] args)
         {
-            // Never hardcode your api key...
             // Initialize YoutubeSearchClient
             YoutubeSearchClient ytsClient = new YoutubeSearchClient(Environment.GetEnvironmentVariable("DEVELOPER_KEY"));
 
