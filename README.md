@@ -26,6 +26,82 @@ In order to compile YoutubeSearchApi.Net, you require the following:
 ### Using Command Line
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
 
+## Quick Start
+```C#
+using System;
+using YoutubeSearchAPI;
+
+namespace Test
+{
+    class TestYoutubeSearchClient
+    { 
+        static async System.Threading.Tasks.Task Main(string[] args)
+        {
+            // Never hardcode your api key...
+            // Initialize YoutubeSearchClient
+            YoutubeSearchClient ytsClient = new YoutubeSearchClient(Environment.GetEnvironmentVariable("DEVELOPER_KEY"));
+
+            // Search with maxResults 1 & with keywords "CHiCO with Honeyworks"
+            dynamic responseObject = await ytsClient.Search("CHiCO with Honeyworks", maxResults: 1);
+
+            // Print the video id & title
+            Console.WriteLine("VideoId: " + responseObject["items"][0]["id"]["videoId"]);
+            Console.WriteLine("Title:   " + responseObject["items"][0]["snippet"]["title"]);
+
+            // Print entries
+            Console.WriteLine(responseObject["items"]);
+        }
+    }
+}
+```
+
+### Output
+```bash
+VideoId: K2pCnvLXdks
+Title:   CHiCO with HoneyWorks - ?????????? / THE FIRST TAKE
+```
+
+### Output Raw
+```bash
+[
+  {
+    "kind": "youtube#searchResult",
+    "etag": "zwODij6h3fo6eO9a-CjM0eWLGu0",
+    "id": {
+      "kind": "youtube#video",
+      "videoId": "K2pCnvLXdks"
+    },
+    "snippet": {
+      "publishedAt": "2020-09-18T13:00:12Z",
+      "channelId": "UC9zY_E8mcAo_Oq772LEZq8Q",
+      "title": "CHiCO with HoneyWorks - ?????????? / THE FIRST TAKE",
+      "description": "?THE FIRST TAKE???????????????????????YouTube?????? ONE TAKE ONLY, ONE LIFE ONLY. ?????????????? ?55? ...",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/K2pCnvLXdks/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/K2pCnvLXdks/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/K2pCnvLXdks/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "THE FIRST TAKE",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-09-18T13:00:12Z"
+    }
+  },
+]
+```
+
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
