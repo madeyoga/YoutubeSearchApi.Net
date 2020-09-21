@@ -1,27 +1,27 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace YoutubeSearchAPI.Modules
 {
     public class Utils
     {
-        public static dynamic DecodeJson(String jsonString)
-            => JsonConvert.DeserializeObject<Dictionary<String, object>>(jsonString);
+        public static dynamic DecodeJson(string jsonString)
+            => JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonString);
 
-        public static async Task <dynamic> HttpRequestGet(HttpClient httpClient, String requestUrl)
+        public static async Task <dynamic> HttpRequestGet(HttpClient httpClient, string requestUrl)
         {
             var response = await httpClient.GetAsync(requestUrl);
 
-            String jsonString = await response.Content.ReadAsStringAsync();
+            string jsonString = await response.Content.ReadAsStringAsync();
 
-            return JsonConvert.DeserializeObject<Dictionary<String, object>>(jsonString);
+            return JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonString);
         }
 
-        public static String GetSourceFromUrl(String url)
+        public static string GetSourceFromUrl(string url)
         {
             string htmlCode = "";
 
@@ -32,6 +32,5 @@ namespace YoutubeSearchAPI.Modules
 
             return htmlCode;
         }
-
     }
 }

@@ -1,20 +1,19 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-
+using Newtonsoft.Json;
 using YoutubeSearchAPI.Modules;
 
 namespace YoutubeSearchAPI
 {
     public class YoutubeSearchClient
     {
-        private String developerKey;
+        private string developerKey;
         private UrlBuilder urlBuilder;
         private readonly HttpClient httpClient;
 
-        public YoutubeSearchClient(String developerKey)
+        public YoutubeSearchClient(string developerKey)
         {
             this.developerKey = developerKey;
             
@@ -23,34 +22,52 @@ namespace YoutubeSearchAPI
             urlBuilder = new UrlBuilder(developerKey);
         }
 
-        private async Task <dynamic> HttpRequestGet(String requestUrl)
+        private async Task <dynamic> HttpRequestGet(string requestUrl)
         {
             var response = await httpClient.GetAsync(requestUrl);
 
-            String jsonString = await response.Content.ReadAsStringAsync();
+            string jsonString = await response.Content.ReadAsStringAsync();
 
-            return JsonConvert.DeserializeObject<Dictionary<String, object>>(jsonString);
+            dynamic jsonObject = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonString);
+
+            return jsonObject;
         }
 
-        public async Task <dynamic> Search(String query, String part = "snippet", String type = "Video", int maxResults = 5, int videoCategory = 10)
+        public async Task <dynamic> Search(string query, string part = "snippet", string type = "Video", int maxResults = 5, int videoCategory = 10)
         {
-            String requestUrl = urlBuilder.BuildSearchUrl(query, part, type, maxResults, videoCategory);
+            string requestUrl = urlBuilder.BuildSearchUrl(query, part, type, maxResults, videoCategory);
             
-            return await HttpRequestGet(requestUrl);
+            return await Utils.HttpRequestGet(httpClient, requestUrl);
         }
 
-        public async Task <dynamic> GetPlayListById(String playlistId, int maxResults = 5, String part = "snippet")
+        public async Task <dynamic> GetPlaylist(string playlistId, int maxResults = 5, string part = "snippet")
         {
-            String requestUrl = urlBuilder.BuildPlayListUrl(playlistId, part: part, maxResults: maxResults);
+            string requestUrl = urlBuilder.BuildPlaylistUrl(playlistId, part: part, maxResults: maxResults);
 
-            return await HttpRequestGet(requestUrl);
+            return await Utils.HttpRequestGet(httpClient, requestUrl);
         }
 
-        public async Task <dynamic> GetVideoDetail(String videoId)
+        public async Task <dynamic> GetVideoDetails(string videoId, List<string> part)
         {
-            String requestUrl = urlBuilder.BuildDetailUrl(videoId: videoId);
+            string requestUrl = urlBuilder.BuildVideoDetailUrl(videoId: videoId);
 
-            return await HttpRequestGet(requestUrl);
+            return await Utils.HttpRequestGet(httpClient, requestUrl);
+        }
+
+        public async Task <dynamic> GetVideoCommentThreads(string videoId, int maxResults = 5, string textFormat = "plainText", string part = "snippet")
+        {
+            string requestUrl = urlBuilder.BuildVideoCommentThreadsUrl(videoId: videoId, 
+                maxResults: maxResults, textFormat: textFormat, part: part);
+
+            return await Utils.HttpRequestGet(httpClient, requestUrl);
+        }
+
+        public async Task <dynamic> GetChannelCommentThreads(string channelId, int maxResults = 5, string textFormat = "plainText", string part = "snippet")
+        {
+            string requestUrl = urlBuilder.BuildChannelCommentThreadsUrl(channelId: channelId,
+                maxResults: maxResults, textFormat: textFormat, part: part);
+
+            return await Utils.HttpRequestGet(httpClient, requestUrl);
         }
     }
 }
