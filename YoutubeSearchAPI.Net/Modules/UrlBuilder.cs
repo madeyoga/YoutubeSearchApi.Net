@@ -5,31 +5,39 @@ namespace YoutubeSearchAPI.Modules
 {
     public class UrlBuilder
     {
-        private static readonly String baseUrl = "https://www.googleapis.com/youtube/v3";
-        private String baseSearchUrl = $"{baseUrl}/search/?key=";
-        private String baseDetailUrl = $"{baseUrl}/videos?key=";
-        private String basePlayListUrl = $"{baseUrl}/playlistItems?key=";
+        private static readonly string baseUrl = "https://www.googleapis.com/youtube/v3";
+        private string baseSearchUrl = $"{baseUrl}/search/?key=";
+        private string baseVideoDetailUrl = $"{baseUrl}/videos?key=";
+        private string basePlaylistUrl = $"{baseUrl}/playlistItems?key=";
+        private string baseCommentThreadsUrl = $"{baseUrl}/commentThreads?key=";
 
-        public UrlBuilder(String developerKey)
+        public UrlBuilder(string developerKey)
         {
             baseSearchUrl += developerKey;
-            baseDetailUrl += developerKey;
-            basePlayListUrl += developerKey;
+            baseVideoDetailUrl += developerKey;
+            basePlaylistUrl += developerKey;
+            baseCommentThreadsUrl += developerKey;
         }
 
-        public String BuildSearchUrl(String query, String part = "snippet", String type = "Video", int maxResults = 5, int videoCategory = 10)
+        public string BuildSearchUrl(string query, string part = "snippet", string type = "Video", int maxResults = 5, int videoCategory = 10)
         {
-            String encodedQuery = HttpUtility.UrlEncode(query);
+            string encodedQuery = HttpUtility.UrlEncode(query);
             
-            String searchUrl = $"{baseSearchUrl}&q={encodedQuery}&part={part}&type={type}&maxResults={maxResults}";
+            string searchUrl = $"{baseSearchUrl}&q={encodedQuery}&part={part}&type={type}&maxResults={maxResults}";
 
             return searchUrl;
         }
 
-        public String BuildDetailUrl(String videoId)
-            => $"{baseDetailUrl}&id={videoId}&part=contentDetails";
+        public string BuildVideoDetailUrl(string videoId)
+            => $"{baseVideoDetailUrl}&id={videoId}&part=contentDetails";
 
-        public String BuildPlayListUrl(String playlistId, String part = "snippet", int maxResults = 7)
-            => $"{basePlayListUrl}&part={part}&maxResults={maxResults}&playlistId={playlistId}";
+        public string BuildPlaylistUrl(string playlistId, string part = "snippet", int maxResults = 7)
+            => $"{basePlaylistUrl}&part={part}&maxResults={maxResults}&playlistId={playlistId}";
+
+        public string BuildVideoCommentThreadsUrl(string videoId, int maxResults = 5, string textFormat = "plainText", string part = "snippet")
+            => $"{baseCommentThreadsUrl}&videoId={videoId}&maxResults={maxResults}&textFormat={textFormat}&part={part}";
+
+        public string BuildChannelCommentThreadsUrl(string channelId, int maxResults = 5, string textFormat = "plainText", string part = "snippet")
+            => $"{baseCommentThreadsUrl}&channelId={channelId}&maxResults={maxResults}&textFormat={textFormat}&part={part}";
     }
 }
