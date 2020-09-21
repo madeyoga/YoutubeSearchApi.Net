@@ -2,15 +2,33 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>20.09.2020</Version>
-    <Description>Simple to use C# package for Youtube Search, using Youtube Data API v3.</Description>
+    <Version>20.09.2020.1</Version>
+    <Description>A lightweight &amp; simple .NET library to extract data from Youtube Data API v3.</Description>
     <Authors>yeogaa</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company>yeogaa</Company>
+    <Product>YoutubeSearchAPI.Net</Product>
+    <PackageProjectUrl>https://github.com/madeyoga/YoutubeSearchApi/tree/master</PackageProjectUrl>
+    <PackageIcon></PackageIcon>
+    <RepositoryUrl>https://github.com/madeyoga/YoutubeSearchApi/tree/master</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>youtube-search,youtube-api-v3</PackageTags>
+    <PackageReleaseNotes>Add YoutubeSearchClient</PackageReleaseNotes>
+    <Copyright>yeogaa</Copyright>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <AssemblyVersion>20.9.2020.1</AssemblyVersion>
+    <FileVersion>20.9.2020.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
