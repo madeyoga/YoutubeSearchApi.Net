@@ -26,6 +26,11 @@ In order to compile YoutubeSearchApi.Net, you require the following:
 ### Using Command Line
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
 
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
 ## Quick Start
 ```C#
 using System;
@@ -100,9 +105,3 @@ Title:   CHiCO with HoneyWorks - ?????????? / THE FIRST TAKE
   },
 ]
 ```
-
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
