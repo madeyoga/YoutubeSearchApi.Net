@@ -45,8 +45,8 @@ namespace Test
             // Initialize YoutubeSearchClient
             YoutubeSearchClient ytsClient = new YoutubeSearchClient(Environment.GetEnvironmentVariable("DEVELOPER_KEY"));
 
-            // Search with maxResults 1 & with keywords "CHiCO with Honeyworks"
-            dynamic responseObject = await ytsClient.Search("CHiCO with Honeyworks", maxResults: 1);
+            // Search with maxResults 1 & with keywords "CHiCO Love Letter"
+            dynamic responseObject = await ytsClient.Search("CHiCO Love Letter", maxResults: 1);
 
             // Print the video id & title
             Console.WriteLine("VideoId: " + responseObject["items"][0]["id"]["videoId"]);
@@ -61,46 +61,46 @@ namespace Test
 
 ### Output
 ```bash
-VideoId: K2pCnvLXdks
-Title:   CHiCO with HoneyWorks - ?????????? / THE FIRST TAKE
+VideoId: hVUfJioCa0s
+Title:   CHiCO with HoneyWorks - Love Letter ~ English Subtitles
 ```
 
-### Output Raw
+### Raw ["items"]
 ```bash
 [
   {
     "kind": "youtube#searchResult",
-    "etag": "zwODij6h3fo6eO9a-CjM0eWLGu0",
+    "etag": "dvGbeGQbn8pnlhltXOGAJUCInek",
     "id": {
       "kind": "youtube#video",
-      "videoId": "K2pCnvLXdks"
+      "videoId": "hVUfJioCa0s"
     },
     "snippet": {
-      "publishedAt": "2020-09-18T13:00:12Z",
-      "channelId": "UC9zY_E8mcAo_Oq772LEZq8Q",
-      "title": "CHiCO with HoneyWorks - ?????????? / THE FIRST TAKE",
-      "description": "?THE FIRST TAKE???????????????????????YouTube?????? ONE TAKE ONLY, ONE LIFE ONLY. ?????????????? ?55? ...",
+      "publishedAt": "2019-10-30T19:26:41Z",
+      "channelId": "UCU9G-F-f_NLxDMAQM6T-r9w",
+      "title": "CHiCO with HoneyWorks - Love Letter ~ English Subtitles",
+      "description": "Happy Halloween everybody! :D This song is probably my favorite in the album. Too bad it did not become a single. If you listen carefully to the 2nd verse, ...",
       "thumbnails": {
         "default": {
-          "url": "https://i.ytimg.com/vi/K2pCnvLXdks/default.jpg",
+          "url": "https://i.ytimg.com/vi/hVUfJioCa0s/default.jpg",
           "width": 120,
           "height": 90
         },
         "medium": {
-          "url": "https://i.ytimg.com/vi/K2pCnvLXdks/mqdefault.jpg",
+          "url": "https://i.ytimg.com/vi/hVUfJioCa0s/mqdefault.jpg",
           "width": 320,
           "height": 180
         },
         "high": {
-          "url": "https://i.ytimg.com/vi/K2pCnvLXdks/hqdefault.jpg",
+          "url": "https://i.ytimg.com/vi/hVUfJioCa0s/hqdefault.jpg",
           "width": 480,
           "height": 360
         }
       },
-      "channelTitle": "THE FIRST TAKE",
+      "channelTitle": "RandomAir BGM",
       "liveBroadcastContent": "none",
-      "publishTime": "2020-09-18T13:00:12Z"
+      "publishTime": "2019-10-30T19:26:41Z"
     }
-  },
+  }
 ]
 ```
