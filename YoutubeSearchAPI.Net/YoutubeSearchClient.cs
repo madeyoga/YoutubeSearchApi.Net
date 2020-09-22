@@ -22,17 +22,6 @@ namespace YoutubeSearchAPI
             urlBuilder = new UrlBuilder(developerKey);
         }
 
-        private async Task <dynamic> HttpRequestGet(string requestUrl)
-        {
-            var response = await httpClient.GetAsync(requestUrl);
-
-            string jsonString = await response.Content.ReadAsStringAsync();
-
-            dynamic jsonObject = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonString);
-
-            return jsonObject;
-        }
-
         public async Task <dynamic> Search(string query, string part = "snippet", string type = "Video", int maxResults = 5, int videoCategory = 10)
         {
             string requestUrl = urlBuilder.BuildSearchUrl(query, part, type, maxResults, videoCategory);
