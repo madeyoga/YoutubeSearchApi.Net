@@ -31,6 +31,9 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
+### To Do / Work in Progress
+- Client for download video/song using ytdl
+
 ## Quick Start
 ```C#
 using System;
