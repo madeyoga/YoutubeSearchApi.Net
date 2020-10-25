@@ -3,21 +3,17 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Version>2020.10.25</Version>
-    <Description>A lightweight &amp; simple .NET library to extract data from Youtube with Scrape client or Youtube Data Api V3</Description>
+    <Description>A lightweight &amp; simple .NET library to extract data from Youtube with Scrapper client or Youtube Data Api V3</Description>
     <Authors>yeogaa</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company>yeogaa</Company>
     <Product>YoutubeSearchApi.Net</Product>
-    <PackageProjectUrl>https://github.com/madeyoga/YoutubeSearchApi</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/madeyoga/YoutubeSearchApi.Net</PackageProjectUrl>
     <PackageIcon></PackageIcon>
     <RepositoryUrl>https://github.com/madeyoga/YoutubeSearchApi.Net/tree/master</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>youtube-search,youtube-search-api,youtube-api-v3</PackageTags>
-    <PackageReleaseNotes>Update YoutubeSearchClient
-
-Added:
-- Video CommentThreads
-- Channel CommentThreads</PackageReleaseNotes>
+    <PackageReleaseNotes>Add Scrape Client</PackageReleaseNotes>
     <Copyright>yeogaa</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <AssemblyVersion>2020.10.25</AssemblyVersion>

@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\YoutubeSearchAPI.Net\YoutubeSearchApi.Net.csproj" />
+    <PackageReference Include="YoutubeSearchApi.Net" Version="2020.10.25" />
   </ItemGroup>
 
 </Project>
