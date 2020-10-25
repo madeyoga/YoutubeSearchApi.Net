@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoutubeSearchAPI", "YoutubeSearchAPI.Net\YoutubeSearchAPI.csproj", "{E8DD0D0C-59AE-43C2-923C-8A5810BE779C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoutubeSearchApi.Net", "YoutubeSearchAPI.Net\YoutubeSearchApi.Net.csproj", "{E8DD0D0C-59AE-43C2-923C-8A5810BE779C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "TestSearch\Test.csproj", "{C870CC27-433D-4C42-858D-055ECAA6425E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "TestSearch\Test.csproj", "{C870CC27-433D-4C42-858D-055ECAA6425E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

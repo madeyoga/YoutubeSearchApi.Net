@@ -2,22 +2,26 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>20.09.2020.1</Version>
+    <Version>22.09.2020</Version>
     <Description>A lightweight &amp; simple .NET library to extract data from Youtube Data API v3.</Description>
     <Authors>yeogaa</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company>yeogaa</Company>
     <Product>YoutubeSearchAPI.Net</Product>
-    <PackageProjectUrl>https://github.com/madeyoga/YoutubeSearchApi/tree/master</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/madeyoga/YoutubeSearchApi</PackageProjectUrl>
     <PackageIcon></PackageIcon>
     <RepositoryUrl>https://github.com/madeyoga/YoutubeSearchApi/tree/master</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>youtube-search,youtube-api-v3</PackageTags>
-    <PackageReleaseNotes>Add YoutubeSearchClient</PackageReleaseNotes>
+    <PackageTags>youtube-search,youtube-search-api,youtube-api-v3</PackageTags>
+    <PackageReleaseNotes>Update YoutubeSearchClient
+
+Added:
+- Video CommentThreads
+- Channel CommentThreads</PackageReleaseNotes>
     <Copyright>yeogaa</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <AssemblyVersion>20.9.2020.1</AssemblyVersion>
-    <FileVersion>20.9.2020.1</FileVersion>
+    <AssemblyVersion>22.09.2020</AssemblyVersion>
+    <FileVersion>22.09.2020</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

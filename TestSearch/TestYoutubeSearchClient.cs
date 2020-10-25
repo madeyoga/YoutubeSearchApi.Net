@@ -1,15 +1,17 @@
 ﻿using System;
-using YoutubeSearchAPI;
+using System.Threading.Tasks;
+using YoutubeSearchApiNet;
 
 namespace Test
 {
     class TestYoutubeSearchClient
-    { 
-        static async System.Threading.Tasks.Task Main(string[] args)
+    {
+        public static async Task AsyncMain()
         {
+
             // Never hardcode your api key...
             // Initialize YoutubeSearchClient
-            YoutubeSearchClient ytsClient = new YoutubeSearchClient(Environment.GetEnvironmentVariable("DEVELOPER_KEY"));
+            YoutubeApiV3Client ytsClient = new YoutubeApiV3Client(Environment.GetEnvironmentVariable("DEVELOPER_KEY"));
 
             // Search with maxResults 1 & with keywords "CHiCO Love Letter"
             dynamic responseObject = await ytsClient.Search("CHiCO Love Letter", maxResults: 1);
@@ -20,6 +22,11 @@ namespace Test
 
             // Print entries
             Console.WriteLine(responseObject["items"]);
+        }
+
+        public static void Main(string[] args)
+        {
+            AsyncMain().GetAwaiter().GetResult();
         }
     }
 }
