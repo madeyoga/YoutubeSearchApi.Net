@@ -8,7 +8,6 @@ namespace Test
     {
         public static async Task AsyncMain()
         {
-
             // Never hardcode your api key...
             // Initialize YoutubeSearchClient
             YoutubeApiV3Client ytsClient = new YoutubeApiV3Client(Environment.GetEnvironmentVariable("DEVELOPER_KEY"));
