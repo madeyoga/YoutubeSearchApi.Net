@@ -36,73 +36,40 @@ Please make sure to update tests as appropriate.
 ## Quick Start
 ```C#
 using System;
-using YoutubeSearchAPI;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using YoutubeSearchApiNet;
+using YoutubeSearchApiNet.Objects;
 
 namespace Test
 {
-    class TestYoutubeSearchClient
-    { 
-        static async System.Threading.Tasks.Task Main(string[] args)
+    class TestYoutubeClient
+    {
+        public static async Task AsyncMain()
         {
-            // Initialize YoutubeSearchClient
-            YoutubeSearchClient ytsClient = new YoutubeSearchClient(Environment.GetEnvironmentVariable("DEVELOPER_KEY"));
+            HttpClient httpClient = new HttpClient();
+
+            // Initialize YoutubeClient
+            YoutubeClient ytClient = new YoutubeClient(httpClient);
 
             // Search with maxResults 1 & with keywords "CHiCO Love Letter"
-            dynamic responseObject = await ytsClient.Search("CHiCO Love Letter", maxResults: 1);
+            List<YoutubeVideo> responseObject = await ytClient.Search("CHiCO Love Letter", maxResults: 1);
 
-            // Print the video id & title
-            Console.WriteLine("VideoId: " + responseObject["items"][0]["id"]["videoId"]);
-            Console.WriteLine("Title:   " + responseObject["items"][0]["snippet"]["title"]);
+            foreach(YoutubeVideo video in responseObject)
+            {
+                Console.WriteLine(video.ToString());
+                Console.WriteLine("");
+            }
+        }
 
-            // Print entries
-            Console.WriteLine(responseObject["items"]);
+        public static void Main(string[] args)
+        {
+            AsyncMain().GetAwaiter().GetResult();
         }
     }
 }
 ```
 
-### Output
-```bash
-VideoId: hVUfJioCa0s
-Title:   CHiCO with HoneyWorks - Love Letter ~ English Subtitles
-```
-
-### Raw ["items"]
-```bash
-[
-  {
-    "kind": "youtube#searchResult",
-    "etag": "dvGbeGQbn8pnlhltXOGAJUCInek",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "hVUfJioCa0s"
-    },
-    "snippet": {
-      "publishedAt": "2019-10-30T19:26:41Z",
-      "channelId": "UCU9G-F-f_NLxDMAQM6T-r9w",
-      "title": "CHiCO with HoneyWorks - Love Letter ~ English Subtitles",
-      "description": "Happy Halloween everybody! :D This song is probably my favorite in the album. Too bad it did not become a single. If you listen carefully to the 2nd verse, ...",
-      "thumbnails": {
-        "default": {
-          "url": "https://i.ytimg.com/vi/hVUfJioCa0s/default.jpg",
-          "width": 120,
-          "height": 90
-        },
-        "medium": {
-          "url": "https://i.ytimg.com/vi/hVUfJioCa0s/mqdefault.jpg",
-          "width": 320,
-          "height": 180
-        },
-        "high": {
-          "url": "https://i.ytimg.com/vi/hVUfJioCa0s/hqdefault.jpg",
-          "width": 480,
-          "height": 360
-        }
-      },
-      "channelTitle": "RandomAir BGM",
-      "liveBroadcastContent": "none",
-      "publishTime": "2019-10-30T19:26:41Z"
-    }
-  }
-]
-```
+Full [examples at Test project](https://github.com/madeyoga/YoutubeSearchApi.Net/tree/master/TestSearch)
