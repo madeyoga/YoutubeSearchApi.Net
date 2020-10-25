@@ -1,6 +1,5 @@
 # YoutubeSearchApi.Net
-![CodeFactor](https://www.codefactor.io/repository/github/madeyoga/youtubesearchapi/badge/master)
-![NugetBadge](https://img.shields.io/nuget/v/YoutubeSearchApi)
+[![CodeFactor](https://www.codefactor.io/repository/github/madeyoga/youtubesearchapi.net/badge)](https://www.codefactor.io/repository/github/madeyoga/youtubesearchapi.net)
 [![contributionswelcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/madeyoga/YoutubeSearchApi/issues)
 [![DiscordBadge](https://discordapp.com/api/guilds/458296099049046018/embed.png)](https://discord.gg/Y8sB4ay)
 
