@@ -7,7 +7,7 @@ using YoutubeSearchApiNet.Modules;
 
 namespace YoutubeSearchApiNet
 {
-    [Obsolete("Not used any more", true)]
+    [Obsolete("YoutubeSearchClient will be removed in the future, Please use YoutubeApiV3Client instead.", true)]
     public class YoutubeSearchClient
     {
         private string developerKey;
