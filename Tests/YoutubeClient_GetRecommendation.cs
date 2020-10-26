@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using YoutubeSearchApiNet;
-using YoutubeSearchApiNet.Objects;
+using YoutubeSearchApi.Net;
+using YoutubeSearchApi.Net.Objects;
 
 namespace Test
 {
-    class TestYoutubeClient
+    class YoutubeClient_GetRecommendation
     {
         public static async Task AsyncMain()
         {
@@ -17,14 +17,10 @@ namespace Test
             // Initialize YoutubeClient
             YoutubeClient ytClient = new YoutubeClient(httpClient);
 
-            // Search with maxResults 1 & with keywords "CHiCO Love Letter"
-            List<YoutubeVideo> responseObject = await ytClient.Search("CHiCO Love Letter", maxResults: 1);
+            // Get sond PlaylistRecommendation by video Id.
+            YoutubePlaylist youtubePlaylist = await ytClient.GetPlaylistRecommendation("9CyMi-n36rg");
 
-            foreach(YoutubeVideo video in responseObject)
-            {
-                Console.WriteLine(video.ToString());
-                Console.WriteLine("");
-            }
+            Console.WriteLine(youtubePlaylist);
         }
 
         public static void Main(string[] args)

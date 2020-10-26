@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using YoutubeSearchApiNet.Modules;
+using YoutubeSearchApi.Net.Modules;
 
-namespace YoutubeSearchApiNet
+namespace YoutubeSearchApi.Net
 {
     [Obsolete("YoutubeSearchClient will be removed in the future, Please use YoutubeApiV3Client instead.", true)]
     public class YoutubeSearchClient

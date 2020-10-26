@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace YoutubeSearchApiNet.Exceptions
+namespace YoutubeSearchApi.Net.Exceptions
 {
     [Serializable()]
     public class NoResultFoundException : System.Exception

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using YoutubeSearchApiNet;
+using YoutubeSearchApi.Net;
 
 namespace Test
 {
-    class TestYoutubeSearchClient
+    class YoutubeApiV3Client_Search
     {
         public static async Task AsyncMain()
         {

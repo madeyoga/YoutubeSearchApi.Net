@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using YoutubeSearchApiNet.Modules;
+using YoutubeSearchApi.Net.Modules;
 
-namespace YoutubeSearchApiNet
+namespace YoutubeSearchApi.Net
 {
     public class YoutubeApiV3Client
     {

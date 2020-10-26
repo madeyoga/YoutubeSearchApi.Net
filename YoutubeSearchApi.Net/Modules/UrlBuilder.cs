@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web;
 
-namespace YoutubeSearchApiNet.Modules
+namespace YoutubeSearchApi.Net.Modules
 {
     public class UrlBuilder
     {

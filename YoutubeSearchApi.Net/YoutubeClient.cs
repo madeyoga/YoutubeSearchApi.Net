@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
-using YoutubeSearchApiNet.Exceptions;
-using YoutubeSearchApiNet.Modules;
-using YoutubeSearchApiNet.Objects;
+using YoutubeSearchApi.Net.Exceptions;
+using YoutubeSearchApi.Net.Modules;
+using YoutubeSearchApi.Net.Objects;
 
-namespace YoutubeSearchApiNet
+namespace YoutubeSearchApi.Net
 {
     public class YoutubeClient
     {
@@ -86,6 +87,32 @@ namespace YoutubeSearchApiNet
             }
 
             return searchResults;
+        }
+
+        public async Task<YoutubePlaylist> GetPlaylistRecommendation(string videoId)
+        {
+            string requestUrl = YOUTUBE_BASE_URL + "watch?v=" + videoId;
+            
+            string pageContent = await Utils.GetSourceFromUrl(httpClient, requestUrl);
+
+            string regexPattern = "\"compactRadioRenderer\"(.+?)\"compactVideoRenderer\"";
+
+            Match matcher = Regex.Match(pageContent, regexPattern, RegexOptions.IgnoreCase);
+
+            if (matcher.Success)
+            {
+                string compactRadioRenderer = matcher.Value;
+
+                // Get Json String
+                compactRadioRenderer = "{" + 
+                    compactRadioRenderer.Substring(0, compactRadioRenderer.Length - ",{\"compactVideoRenderer\"".Length);
+
+                JObject compactRadioRendererObject = JObject.Parse(compactRadioRenderer)["compactRadioRenderer"].Value<JObject>();
+
+                return YoutubePlaylist.ParseCompactRadioRenderer(compactRadioRendererObject);
+            }
+
+            throw new NoResultFoundException("Cannot find any recommendation for videoId: " + videoId);
         }
     }
 }
