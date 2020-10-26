@@ -68,4 +68,4 @@ namespace Test
 }
 ```
 
-Full [examples at Test project](https://github.com/madeyoga/YoutubeSearchApi.Net/tree/master/Test)
+Full [examples at Test project](https://github.com/madeyoga/YoutubeSearchApi.Net/tree/master/Tests)
