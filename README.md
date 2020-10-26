@@ -7,7 +7,7 @@ A lightweight &amp; simple .NET library to extract data from Youtube, with Scrap
 The purpose of this project is to make it easier for developers to extract data from YouTube.
 
 ## Requirements
-- [Get Google API Credential 'API KEY'](https://developers.google.com/youtube/registering_an_application) for **YoutubeDataApiV3Client** only
+- [Get Google API Credential 'API KEY'](https://developers.google.com/youtube/registering_an_application) only for **YoutubeDataApiV3Client**
 
 ## Installation
 
