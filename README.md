@@ -105,6 +105,10 @@ var client = new DefaultSearchClient(new MySearchBackend());
 ```
 
 
+## Code Review
+I tried implementing the Dependency Inversion Principle in this project. Code review would really help me out :]
+
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
