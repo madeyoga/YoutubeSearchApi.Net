@@ -93,12 +93,12 @@ public class MySearchBackend : ISearchBackend
 
     public IResponseObject ParseData(string pageContent, int maxResults)
     {
-        throw new NotImplementedException()
+        throw new NotImplementedException();
     }
 
     public async Task<string> RequestDataAsync(HttpClient httpClient, string query, int retry = 3, Dictionary<string, object> extras = null)
     {
-        throw new NotImplementedException()
+        throw new NotImplementedException();
     }
 }
 ```
