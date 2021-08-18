@@ -6,19 +6,21 @@ using System.Text;
 
 namespace YoutubeSearchApi.Net.Objects
 {
-    public class YoutubeVideo
+    public class YoutubeVideo : IResponseObject
     {
         public string Id { get; }
-        public string Uri { get; }
+        public string Url { get; }
         public string Title { get; }
         public string ThumbnailUrl { get; }
         public string Duration { get; }
         public string Author { get; }
 
+        public List<object> Results => throw new NotImplementedException();
+
         public YoutubeVideo(string Id, string Uri, string Title, string ThumbnailUrl, string Duration, string Author)
         {
             this.Id = Id;
-            this.Uri = Uri;
+            this.Url = Uri;
             this.Title = Title;
             this.ThumbnailUrl = ThumbnailUrl;
             this.Duration = Duration;
@@ -48,7 +50,7 @@ namespace YoutubeSearchApi.Net.Objects
         {
             return "YoutubeVideo{" +
                 "Id='" + Id + '\'' +
-                ", Uri='" + Uri + '\'' +
+                ", Url='" + Url + '\'' +
                 ", Title='" + Title + '\'' +
                 ", ThumbnailUrl='" + ThumbnailUrl + '\'' +
                 ", Author='" + Author + '\'' +

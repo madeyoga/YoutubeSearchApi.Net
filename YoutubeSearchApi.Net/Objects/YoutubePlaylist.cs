@@ -42,7 +42,7 @@ namespace YoutubeSearchApi.Net.Objects
         {
             return "YoutubePlaylist{" +
                 "Id='" + Id + '\'' +
-                ", Uri='" + Uri + '\'' +
+                ", Url='" + Uri + '\'' +
                 ", Title='" + Title + '\'' +
                 ", ThumbnailUrl='" + ThumbnailUrl + '\'' +
                 ", MetadataUrl='" + MetadataUrl + '\'' +
