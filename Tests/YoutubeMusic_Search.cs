@@ -9,21 +9,20 @@ using YoutubeSearchApi.Net.Objects;
 
 namespace Test
 {
-    class YoutubeClient_Search
+    class YoutubeMusic_Search
     {
         public static async Task AsyncMain()
         {
             HttpClient httpClient = new HttpClient();
-            
-            DefaultSearchClient client = new DefaultSearchClient(new YoutubeSearchBackend());
 
-            YoutubeResponse responseObject = (YoutubeResponse) await client.SearchAsync(httpClient, "black suit", maxResults: 5);
+            string key = Environment.GetEnvironmentVariable("YT_MUSIC_KEY");
+            DefaultSearchClient client = new DefaultSearchClient(new YoutubeMusicSearchBackend(key));
 
-            Console.WriteLine("RESPONSE: ");
-            foreach(YoutubeVideo video in responseObject.Results)
+            var response = (YoutubeResponse) await client.SearchAsync(httpClient, "black suit", maxResults: 5);
+
+            foreach (YoutubeVideo video in response.Results)
             {
-                Console.WriteLine(video.ToString());
-                Console.WriteLine("");
+                Console.WriteLine(video);
             }
 
             httpClient.Dispose();

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <StartupObject>Test.YoutubeClient_GetRecommendation</StartupObject>
+    <StartupObject>Test.YoutubeMusic_Search</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
