@@ -103,7 +103,7 @@ public class MySearchBackend : ISearchBackend
 }
 ```
 
-Use your new search client:
+Use it with `DefaultSearchClient`:
 ```C#
 var client = new DefaultSearchClient(new MySearchBackend());
 ```
