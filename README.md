@@ -3,12 +3,15 @@
 [![contributionswelcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/madeyoga/YoutubeSearchApi/issues)
 [![DiscordBadge](https://discordapp.com/api/guilds/458296099049046018/embed.png)](https://discord.gg/Y8sB4ay)
 
-A lightweight &amp; simple .NET library to extract data from Youtube.
-The purpose of this project is to make it easier for developers to extract data from YouTube or any source.
+A lightweight & simple .NET library to extract data from Youtube.
+The purpose of this project is to make it easier for developers to extract data from YouTube or any sources.
 
+
+## Supported Sites
+- Youtube
+- Youtube Music
 
 ## Installation
-
 
 ### NuGet
 - [YoutubeSearchApi.Net](https://www.nuget.org/packages/YoutubeSearchApi.Net/)
