@@ -3,8 +3,8 @@
 [![contributionswelcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/madeyoga/YoutubeSearchApi/issues)
 [![DiscordBadge](https://discordapp.com/api/guilds/458296099049046018/embed.png)](https://discord.gg/Y8sB4ay)
 
-A lightweight &amp; simple .NET library to extract data from Youtube, with Scrape client or Youtube Data API v3 client.
-The purpose of this project is to make it easier for developers to extract data from YouTube.
+A lightweight &amp; simple .NET library to extract data from Youtube.
+The purpose of this project is to make it easier for developers to extract data from YouTube or any source.
 
 
 ## Installation
