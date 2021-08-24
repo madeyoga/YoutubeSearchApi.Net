@@ -13,20 +13,19 @@ namespace Test
     {
         public static async Task AsyncMain()
         {
-            HttpClient httpClient = new HttpClient();
-            
-            DefaultSearchClient client = new DefaultSearchClient(new YoutubeSearchBackend());
-
-            YoutubeResponse responseObject = (YoutubeResponse) await client.SearchAsync(httpClient, "black suit", maxResults: 5);
-
-            Console.WriteLine("RESPONSE: ");
-            foreach(YoutubeVideo video in responseObject.Results)
+            using (var httpClient = new HttpClient())
             {
-                Console.WriteLine(video.ToString());
-                Console.WriteLine("");
-            }
+                DefaultSearchClient client = new DefaultSearchClient(new YoutubeSearchBackend());
 
-            httpClient.Dispose();
+                var responseObject = await client.SearchAsync(httpClient, "black suit", maxResults: 5);
+
+                Console.WriteLine("RESPONSE: ");
+                foreach (YoutubeVideo video in responseObject.Results)
+                {
+                    Console.WriteLine(video.ToString());
+                    Console.WriteLine("");
+                }
+            }
         }
 
         public static void Main(string[] args)

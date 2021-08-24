@@ -13,19 +13,18 @@ namespace Test
     {
         public static async Task AsyncMain()
         {
-            HttpClient httpClient = new HttpClient();
-
-            string key = Environment.GetEnvironmentVariable("YT_MUSIC_KEY");
-            DefaultSearchClient client = new DefaultSearchClient(new YoutubeMusicSearchBackend(key));
-
-            var response = (YoutubeResponse) await client.SearchAsync(httpClient, "black suit", maxResults: 5);
-
-            foreach (YoutubeVideo video in response.Results)
+            using (var httpClient = new HttpClient())
             {
-                Console.WriteLine(video);
-            }
+                string key = Environment.GetEnvironmentVariable("YT_MUSIC_KEY");
+                DefaultSearchClient client = new DefaultSearchClient(new YoutubeMusicSearchBackend(key));
 
-            httpClient.Dispose();
+                var response = await client.SearchAsync(httpClient, "black suit", maxResults: 5);
+
+                foreach (YoutubeVideo video in response.Results)
+                {
+                    Console.WriteLine(video);
+                }
+            }
         }
 
         public static void Main(string[] args)
