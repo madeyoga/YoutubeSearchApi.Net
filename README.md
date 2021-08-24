@@ -1,71 +1,119 @@
 # YoutubeSearchApi.Net
-[![CodeFactor](https://www.codefactor.io/repository/github/madeyoga/youtubesearchapi.net/badge)](https://www.codefactor.io/repository/github/madeyoga/youtubesearchapi.net)
-[![contributionswelcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/madeyoga/YoutubeSearchApi/issues)
-[![DiscordBadge](https://discordapp.com/api/guilds/458296099049046018/embed.png)](https://discord.gg/Y8sB4ay)
+![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/madeyoga/YoutubeSearchApi.Net?style=for-the-badge)
+[![Nuget](https://img.shields.io/nuget/dt/YoutubeSearchApi.Net?color=GREEN&style=for-the-badge)](https://www.nuget.org/packages/YoutubeSearchApi.Net/)
+[![contributionswelcome](https://img.shields.io/badge/contributions-welcome-brightgreen/?style=for-the-badge)](https://github.com/madeyoga/YoutubeSearchApi.Net/issues)
+[![discord_invite](https://img.shields.io/discord/458296099049046018?style=for-the-badge)](https://discord.gg/Y8sB4ay)
 
-A lightweight &amp; simple .NET library to extract data from Youtube, with Scrape client or Youtube Data API v3 client.
-The purpose of this project is to make it easier for developers to extract data from YouTube.
+A lightweight & simple .NET library to extract data from Youtube.
+The purpose of this project is to make it easier for developers to extract data from YouTube or any sources.
 
-## Requirements
-- [Get Google API Credential 'API KEY'](https://developers.google.com/youtube/registering_an_application) only for **YoutubeDataApiV3Client**
+
+## Supported Sites
+- Youtube
+- Youtube Music
 
 ## Installation
 
 ### NuGet
 - [YoutubeSearchApi.Net](https://www.nuget.org/packages/YoutubeSearchApi.Net/)
 
-## Compiling
-In order to compile YoutubeSearchApi.Net, you require the following:
 
-### Using Visual Studio
-- [Visual Studio 2019](https://dotnet.microsoft.com/download#windowsvs2019)
-- [.NET Core SDK](https://dotnet.microsoft.com/download)
+## Quick Start
+**Youtube Search**
+```C#
+using YoutubeSearchApi.Net;
+using YoutubeSearchApi.Net.Backends;
+using YoutubeSearchApi.Net.Objects;
 
-### Using Command Line
-- [.NET Core SDK](https://dotnet.microsoft.com/download)
+public static async Task AsyncMain()
+{
+    HttpClient httpClient = new HttpClient();
+
+    DefaultSearchClient client = new DefaultSearchClient(new YoutubeSearchBackend());
+
+    YoutubeResponse responseObject = (YoutubeResponse) await client.SearchAsync(httpClient, "black suit", maxResults: 5);
+
+    Console.WriteLine("RESPONSE: ");
+    foreach(YoutubeVideo video in responseObject.Results)
+    {
+        Console.WriteLine(video.ToString());
+        Console.WriteLine("");
+    }
+
+    httpClient.Dispose();
+}
+
+public static void Main(string[] args)
+{
+    AsyncMain().GetAwaiter().GetResult();
+}
+```
+
+**Youtube Music Search**
+```C#
+using YoutubeSearchApi.Net;
+using YoutubeSearchApi.Net.Backends;
+using YoutubeSearchApi.Net.Objects;
+
+public static async Task AsyncMain()
+{
+    HttpClient httpClient = new HttpClient();
+
+    string key = Environment.GetEnvironmentVariable("YT_MUSIC_KEY");
+    DefaultSearchClient client = new DefaultSearchClient(new YoutubeMusicSearchBackend(key));
+
+    var response = (YoutubeResponse) await client.SearchAsync(httpClient, "black suit", maxResults: 5);
+
+    foreach (YoutubeVideo video in response.Results)
+    {
+        Console.WriteLine(video);
+    }
+
+    httpClient.Dispose();
+}
+
+public static void Main(string[] args)
+{
+    AsyncMain().GetAwaiter().GetResult();
+}
+```
+
+Full [examples at Test project](https://github.com/madeyoga/YoutubeSearchApi.Net/tree/master/Tests)
+
+## Implements Your Own Search Client
+Implements `ISearchBackend` interface:
+
+```C#
+public class MySearchBackend : ISearchBackend 
+{
+    public class MySearchBackend() 
+    {
+    
+    }
+
+    public IResponseObject ParseData(string pageContent, int maxResults)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<string> RequestDataAsync(HttpClient httpClient, string query, int retry = 3, Dictionary<string, object> extras = null)
+    {
+        throw new NotImplementedException();
+    }
+}
+```
+
+Use it with `DefaultSearchClient`:
+```C#
+var client = new DefaultSearchClient(new MySearchBackend());
+```
+
+
+## Code Review
+I tried implementing the Dependency Inversion Principle in this project. Code review would really help me out :]
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
-
-## Quick Start
-```C#
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using YoutubeSearchApiNet;
-using YoutubeSearchApiNet.Objects;
-
-namespace Test
-{
-    class TestYoutubeClient
-    {
-        public static async Task AsyncMain()
-        {
-            HttpClient httpClient = new HttpClient();
-
-            // Initialize YoutubeClient
-            YoutubeClient ytClient = new YoutubeClient(httpClient);
-
-            // Search with maxResults 1 & with keywords "CHiCO Love Letter"
-            List<YoutubeVideo> responseObject = await ytClient.Search("CHiCO Love Letter", maxResults: 1);
-
-            foreach(YoutubeVideo video in responseObject)
-            {
-                Console.WriteLine(video.ToString());
-                Console.WriteLine("");
-            }
-        }
-
-        public static void Main(string[] args)
-        {
-            AsyncMain().GetAwaiter().GetResult();
-        }
-    }
-}
-```
-
-Full [examples at Test project](https://github.com/madeyoga/YoutubeSearchApi.Net/tree/master/Tests)
