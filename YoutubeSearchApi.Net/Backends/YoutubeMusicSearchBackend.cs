@@ -17,6 +17,8 @@ namespace YoutubeSearchApi.Net.Backends
     public class YoutubeMusicSearchBackend : ISearchBackend
     {
         string BASE_URL { get; }
+        string Query { get; }
+        string RequestUrl { get; }
         string APIKey { get; set; }
         Dictionary<string, object> Parameters { get; }
 
@@ -25,15 +27,16 @@ namespace YoutubeSearchApi.Net.Backends
             BASE_URL = "https://music.youtube.com/youtubei/v1/search?";
             APIKey = apikey;
 
-            Parameters = new Dictionary<string, object>();
-            Parameters.Add("alt", "json");
-            Parameters.Add("key", APIKey);
+            Parameters = new Dictionary<string, object> 
+            {
+                {"alt", "json" },
+                {"key", APIKey }
+            };
         }
 
-        public IResponseObject ParseData(string pageContent, int maxResults)
+        public DefaultResponse ParseData(string pageContent, int maxResults)
         {
-
-            YoutubeResponse youtubeResponse = new YoutubeResponse();
+            var youtubeResponses = new List<IResponseResult>();
 
             JObject jsonObject = JObject.Parse(pageContent);
             var contents = jsonObject["contents"]["tabbedSearchResultsRenderer"]["tabs"][0]["tabRenderer"]["content"]["sectionListRenderer"]["contents"][0].Value<JObject>();
@@ -58,10 +61,10 @@ namespace YoutubeSearchApi.Net.Backends
                     string duration = element["text"].Value<string>();
 
                     YoutubeVideo video = new YoutubeVideo(videoId, BASE_URL, title, "#", duration, author);
-                    youtubeResponse.Results.Add(video);
+                    youtubeResponses.Add(video);
                 }
             }
-            return youtubeResponse;
+            return new DefaultResponse(RequestUrl, Query, youtubeResponses);
         }
 
         public async Task<string> RequestDataAsync(HttpClient httpClient, string query, int retry = 3, Dictionary<string, object> extras = null)

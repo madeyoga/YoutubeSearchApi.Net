@@ -17,10 +17,11 @@ namespace YoutubeSearchApi.Net
             SearchBackend = searchClient;
         }
 
-        public async Task<IResponseObject> SearchAsync(HttpClient httpClient, string query, int maxResults, int retry = 3, Dictionary<string, object> extras = null)
+        public async Task<DefaultResponse> SearchAsync(HttpClient httpClient, string query, int maxResults, int retry = 3, Dictionary<string, object> extras = null)
         {
             string pageContent = await SearchBackend.RequestDataAsync(httpClient, query, retry, extras);
-            return SearchBackend.ParseData(pageContent, maxResults);
+            DefaultResponse response = SearchBackend.ParseData(pageContent, maxResults);
+            return response;
         }
     }
 }

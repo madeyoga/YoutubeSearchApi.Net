@@ -20,7 +20,7 @@ namespace YoutubeSearchApi.Net.Backends
             BASE_URL = "https://www.youtube.com/results?search_query=";
         }
 
-        public IResponseObject ParseData(string pageContent, int maxResults)
+        public DefaultResponse ParseData(string pageContent, int maxResults)
         {
             string startFeature = "ytInitialData";
 
@@ -44,15 +44,31 @@ namespace YoutubeSearchApi.Net.Backends
                 ["contents"][0]
                 ["itemSectionRenderer"]["contents"].Value<JArray>();
 
-            YoutubeResponse youtubeResponse = new YoutubeResponse();
+            var youtubeResponses = new List<IResponseResult>();
+
             int counter = 0;
             foreach (JObject element in contents)
             {
                 if (element.ContainsKey("videoRenderer"))
                 {
                     JObject videoRenderer = element["videoRenderer"].Value<JObject>();
-                    YoutubeVideo youtubeVideo = YoutubeVideo.ParseVideoRenderer(videoRenderer);
-                    youtubeResponse.Results.Add(youtubeVideo);
+
+                    string videoId = videoRenderer["videoId"].Value<string>();
+
+                    string videoUri = "https://www.youtube.com/watch?v=" + videoId;
+
+                    string videoTitle = videoRenderer["title"]["runs"][0]["text"].Value<string>();
+
+                    string videoThumbnailUrl = videoRenderer["thumbnail"]["thumbnails"][0]["url"].Value<string>();
+
+                    string videoDuration = "";
+                    if (videoRenderer.ContainsKey("lengthText"))
+                        videoDuration = videoRenderer["lengthText"]["simpleText"].Value<string>().Replace(".", ":");
+
+                    string videoAuthor = videoRenderer["longBylineText"]["runs"][0]["text"].Value<string>();
+
+                    YoutubeVideo youtubeVideo = new YoutubeVideo(videoId, videoUri, videoTitle, videoThumbnailUrl, videoDuration, videoAuthor);
+                    youtubeResponses.Add(youtubeVideo);
 
                     counter += 1;
                     if (counter >= maxResults)
@@ -61,7 +77,7 @@ namespace YoutubeSearchApi.Net.Backends
                     }
                 }
             }
-            return youtubeResponse;
+            return new DefaultResponse("#", "", youtubeResponses);
         }
 
         public async Task<string> RequestDataAsync(HttpClient httpClient, string query, int retry = 3, Dictionary<string, object> extras = null)
