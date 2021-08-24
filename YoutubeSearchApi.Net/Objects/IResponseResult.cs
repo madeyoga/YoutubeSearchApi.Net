@@ -6,9 +6,10 @@ using System.Text;
 
 namespace YoutubeSearchApi.Net.Objects
 {
-    public interface IResponseObject
+    public interface IResponseResult
     {
         string Url { get; }
-        List<object> Results { get; }
+        string Title { get; }
+        string Query { get; }
     }
 }

@@ -6,16 +6,15 @@ using System.Text;
 
 namespace YoutubeSearchApi.Net.Objects
 {
-    public class YoutubeVideo : IResponseObject
+    public class YoutubeVideo : IResponseResult
     {
         public string Id { get; }
-        public string Url { get; }
+        public string Url { get; set; }
         public string Title { get; }
         public string ThumbnailUrl { get; }
         public string Duration { get; }
         public string Author { get; }
-
-        public List<object> Results => throw new NotImplementedException();
+        public string Query { get; set; }
 
         public YoutubeVideo(string Id, string Uri, string Title, string ThumbnailUrl, string Duration, string Author)
         {
@@ -25,25 +24,6 @@ namespace YoutubeSearchApi.Net.Objects
             this.ThumbnailUrl = ThumbnailUrl;
             this.Duration = Duration;
             this.Author = Author;
-        }
-
-        public static YoutubeVideo ParseVideoRenderer(JObject videoRenderer)
-        {
-            string videoId = videoRenderer["videoId"].Value<string>();
-            
-            string videoUri = "https://www.youtube.com/watch?v=" + videoId;
-
-            string videoTitle = videoRenderer["title"]["runs"][0]["text"].Value<string>();
-
-            string videoThumbnailUrl = videoRenderer["thumbnail"]["thumbnails"][0]["url"].Value<string>();
-            
-            string videoDuration = "";
-            if (videoRenderer.ContainsKey("lengthText"))
-                videoDuration = videoRenderer["lengthText"]["simpleText"].Value<string>().Replace(".", ":");
-
-            string videoAuthor = videoRenderer["longBylineText"]["runs"][0]["text"].Value<string>();
-
-            return new YoutubeVideo(videoId, videoUri, videoTitle, videoThumbnailUrl, videoDuration, videoAuthor);
         }
 
         public override string ToString()
