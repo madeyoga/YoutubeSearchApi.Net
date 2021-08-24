@@ -9,7 +9,7 @@ namespace YoutubeSearchApi.Net.Backends
 {
     public interface ISearchBackend
     {
-        IResponseObject ParseData(string pageContent, int maxResults);
+        DefaultResponse ParseData(string pageContent, int maxResults);
         Task<string> RequestDataAsync(HttpClient httpClient, string query, int retry = 3, Dictionary<string, object> extras = null);
     }
 }

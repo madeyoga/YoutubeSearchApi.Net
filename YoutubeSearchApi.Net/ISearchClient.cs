@@ -10,6 +10,6 @@ namespace YoutubeSearchApi.Net
 {
     public interface ISearchClient
     {
-        Task<IResponseObject> SearchAsync(HttpClient httpClient, string query, int maxResults, int retry = 3, Dictionary<string, object> extras = null);
+        Task<DefaultResponse> SearchAsync(HttpClient httpClient, string query, int maxResults, int retry = 3, Dictionary<string, object> extras = null);
     }
 }
