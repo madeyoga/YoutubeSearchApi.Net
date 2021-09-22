@@ -39,7 +39,6 @@ namespace YoutubeSearchApi.Net.Backends
                         title = headerNodes.First().Descendants("div").First().InnerText;
                     }
 
-
                     // Description
                     var rootNode = node.ParentNode.ParentNode;
                     var childs = rootNode.Descendants("div");
@@ -50,7 +49,6 @@ namespace YoutubeSearchApi.Net.Backends
                         description = childs.Last().InnerHtml;
                     }
 
-                    
                     var googleResult = new GoogleSearchResult(link, title, "", description);
                     results.Add(googleResult);
                 }
