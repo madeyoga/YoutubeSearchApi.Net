@@ -1,7 +1,7 @@
-﻿using YoutubeSearchApi.Net.Models.Youtube;
-using YoutubeSearchApi.Net.Services;
+﻿namespace YoutubeSearchApi.Net.Demo;
 
-namespace YoutubeSearchApi.Net.Demo;
+using YoutubeSearchApi.Net.Models.Youtube;
+using YoutubeSearchApi.Net.Services;
 
 internal class YoutubeMusicSearch_Demo
 {
