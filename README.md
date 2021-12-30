@@ -11,6 +11,7 @@ The purpose of this project is to make it easier for developers to extract data 
 ## Supported Sites
 - Youtube
 - Youtube Music
+- Google Search
 
 ## Installation
 
@@ -27,20 +28,19 @@ using YoutubeSearchApi.Net.Objects;
 
 public static async Task AsyncMain()
 {
-    HttpClient httpClient = new HttpClient();
-
-    DefaultSearchClient client = new DefaultSearchClient(new YoutubeSearchBackend());
-
-    YoutubeResponse responseObject = (YoutubeResponse) await client.SearchAsync(httpClient, "black suit", maxResults: 5);
-
-    Console.WriteLine("RESPONSE: ");
-    foreach(YoutubeVideo video in responseObject.Results)
+    using (var httpClient = new HttpClient())
     {
-        Console.WriteLine(video.ToString());
-        Console.WriteLine("");
-    }
+        DefaultSearchClient client = new DefaultSearchClient(new YoutubeSearchBackend());
 
-    httpClient.Dispose();
+        var responseObject = await client.SearchAsync(httpClient, "black suit", maxResults: 5);
+
+        Console.WriteLine("RESPONSE: ");
+        foreach (YoutubeVideo video in responseObject.Results)
+        {
+            Console.WriteLine(video.ToString());
+            Console.WriteLine("");
+        }
+    }
 }
 
 public static void Main(string[] args)
@@ -57,19 +57,18 @@ using YoutubeSearchApi.Net.Objects;
 
 public static async Task AsyncMain()
 {
-    HttpClient httpClient = new HttpClient();
-
-    string key = Environment.GetEnvironmentVariable("YT_MUSIC_KEY");
-    DefaultSearchClient client = new DefaultSearchClient(new YoutubeMusicSearchBackend(key));
-
-    var response = (YoutubeResponse) await client.SearchAsync(httpClient, "black suit", maxResults: 5);
-
-    foreach (YoutubeVideo video in response.Results)
+    using (var httpClient = new HttpClient())
     {
-        Console.WriteLine(video);
-    }
+        string key = Environment.GetEnvironmentVariable("YT_MUSIC_KEY");
+        DefaultSearchClient client = new DefaultSearchClient(new YoutubeMusicSearchBackend(key));
 
-    httpClient.Dispose();
+        var response = await client.SearchAsync(httpClient, "black suit", maxResults: 5);
+
+        foreach (YoutubeVideo video in response.Results)
+        {
+            Console.WriteLine(video);
+        }
+    }
 }
 
 public static void Main(string[] args)
@@ -91,13 +90,15 @@ public class MySearchBackend : ISearchBackend
     
     }
 
-    public IResponseObject ParseData(string pageContent, int maxResults)
+    public DefaultResponse ParseData(string pageContent, int maxResults)
     {
+        // DefaultResponse will be returned on DefaultSearchClient.SearchAsync method
         throw new NotImplementedException();
     }
 
     public async Task<string> RequestDataAsync(HttpClient httpClient, string query, int retry = 3, Dictionary<string, object> extras = null)
     {
+        // return a string pageContent, for ParseData function
         throw new NotImplementedException();
     }
 }
@@ -106,6 +107,28 @@ public class MySearchBackend : ISearchBackend
 Use it with `DefaultSearchClient`:
 ```C#
 var client = new DefaultSearchClient(new MySearchBackend());
+```
+
+Create a response object:
+```C#
+public class MyBackendResult : IResponseResult
+{
+    public string Url { get; }
+
+    public string Title { get; }
+
+    public string Query { get; }
+
+    public string Description { get; }
+
+    public MyBackendResult(string url, string title, string query, string description)
+    {
+        Url = url;
+        Title = title;
+        Query = query;
+        Description = description;
+    }
+}
 ```
 
 
