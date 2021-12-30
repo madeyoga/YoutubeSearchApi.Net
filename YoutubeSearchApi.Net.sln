@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30503.244
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoutubeSearchApi.Net", "YoutubeSearchApi.Net\YoutubeSearchApi.Net.csproj", "{E8DD0D0C-59AE-43C2-923C-8A5810BE779C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Tests\Test.csproj", "{C870CC27-433D-4C42-858D-055ECAA6425E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoutubeSearchApi.Net.Demo", "YoutubeSearchApi.Net.Demo\YoutubeSearchApi.Net.Demo.csproj", "{58117087-B19A-4AA7-B0FF-950EDF53C216}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{E8DD0D0C-59AE-43C2-923C-8A5810BE779C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8DD0D0C-59AE-43C2-923C-8A5810BE779C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8DD0D0C-59AE-43C2-923C-8A5810BE779C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C870CC27-433D-4C42-858D-055ECAA6425E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C870CC27-433D-4C42-858D-055ECAA6425E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C870CC27-433D-4C42-858D-055ECAA6425E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C870CC27-433D-4C42-858D-055ECAA6425E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58117087-B19A-4AA7-B0FF-950EDF53C216}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58117087-B19A-4AA7-B0FF-950EDF53C216}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58117087-B19A-4AA7-B0FF-950EDF53C216}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58117087-B19A-4AA7-B0FF-950EDF53C216}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
