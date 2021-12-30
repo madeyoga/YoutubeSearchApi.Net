@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>2020.10.26</Version>
-    <Description>A lightweight &amp; simple .NET library to extract data from Youtube with Scrapper client or Youtube Data Api V3</Description>
+    <TargetFramework>net6.0</TargetFramework>
+    <Version>2021.8.24</Version>
+    <Description>A lightweight &amp; simple .NET library to extract data from Youtube or any sources</Description>
     <Authors>yeogaa</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company>yeogaa</Company>
@@ -12,20 +12,19 @@
     <PackageIcon></PackageIcon>
     <RepositoryUrl>https://github.com/madeyoga/YoutubeSearchApi.Net/tree/master</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>youtube-search,youtube-search-api,youtube-api-v3</PackageTags>
-    <PackageReleaseNotes>- Fix namespaces
-
-Add Scraper Client:
-- Search videos By Keywords
-- Get Playlist Recommendation by Video Id</PackageReleaseNotes>
+    <PackageTags>youtube-search,youtube-search-api</PackageTags>
+    <PackageReleaseNotes>- SearchAsync return DefaultResponse object
+- Add support for Google Search</PackageReleaseNotes>
     <Copyright>yeogaa</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <AssemblyVersion>2020.10.26</AssemblyVersion>
-    <FileVersion>2020.10.26</FileVersion>
+    <AssemblyVersion>2021.8.24</AssemblyVersion>
+    <FileVersion>2021.8.24</FileVersion>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
