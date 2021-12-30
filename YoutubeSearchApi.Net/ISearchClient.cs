@@ -1,15 +1,11 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using YoutubeSearchApi.Net.Objects;
 
 namespace YoutubeSearchApi.Net
 {
-    public interface ISearchClient
+    public interface ISearchClient<T>
     {
-        Task<DefaultResponse> SearchAsync(HttpClient httpClient, string query, int maxResults, int retry = 3, Dictionary<string, object> extras = null);
+        T Search(string query, int retry = 3);
+        Task<T> SearchAsync(string query, int retry = 3);
     }
 }

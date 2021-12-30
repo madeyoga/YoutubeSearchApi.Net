@@ -11,7 +11,6 @@ The purpose of this project is to make it easier for developers to extract data 
 ## Supported Sites
 - Youtube
 - Youtube Music
-- Google Search
 
 ## Installation
 
@@ -22,19 +21,17 @@ The purpose of this project is to make it easier for developers to extract data 
 ## Quick Start
 **Youtube Search**
 ```C#
-using YoutubeSearchApi.Net;
-using YoutubeSearchApi.Net.Backends;
-using YoutubeSearchApi.Net.Objects;
+using YoutubeSearchApi.Net.Models.Youtube;
+using YoutubeSearchApi.Net.Services;
 
 public static async Task AsyncMain()
 {
     using (var httpClient = new HttpClient())
     {
-        DefaultSearchClient client = new DefaultSearchClient(new YoutubeSearchBackend());
+        YoutubeSearchClient client = new YoutubeSearchClient(httpClient);
 
-        var responseObject = await client.SearchAsync(httpClient, "black suit", maxResults: 5);
+        var responseObject = await client.SearchAsync("black suit");
 
-        Console.WriteLine("RESPONSE: ");
         foreach (YoutubeVideo video in responseObject.Results)
         {
             Console.WriteLine(video.ToString());
@@ -51,22 +48,21 @@ public static void Main(string[] args)
 
 **Youtube Music Search**
 ```C#
-using YoutubeSearchApi.Net;
-using YoutubeSearchApi.Net.Backends;
-using YoutubeSearchApi.Net.Objects;
+using YoutubeSearchApi.Net.Models.Youtube;
+using YoutubeSearchApi.Net.Services;
 
 public static async Task AsyncMain()
 {
     using (var httpClient = new HttpClient())
     {
-        string key = Environment.GetEnvironmentVariable("YT_MUSIC_KEY");
-        DefaultSearchClient client = new DefaultSearchClient(new YoutubeMusicSearchBackend(key));
+        YoutubeMusicSearchClient client = new YoutubeMusicSearchClient(httpClient);
 
-        var response = await client.SearchAsync(httpClient, "black suit", maxResults: 5);
+        var responseObject = await client.SearchAsync("simple ringtone");
 
-        foreach (YoutubeVideo video in response.Results)
+        foreach (YoutubeVideo video in responseObject.Results)
         {
-            Console.WriteLine(video);
+            Console.WriteLine(video.ToString());
+            Console.WriteLine("");
         }
     }
 }
@@ -77,63 +73,19 @@ public static void Main(string[] args)
 }
 ```
 
-Full [examples at Test project](https://github.com/madeyoga/YoutubeSearchApi.Net/tree/master/Tests)
+[Full examples at Demo project](https://github.com/madeyoga/YoutubeSearchApi.Net/tree/master/YoutubeSearchApi.Net.Demo)
 
-## Implements Your Own Search Client
-Implements `ISearchBackend` interface:
+## Using Service Collection
+```cs
+services.AddHttpClient<HttpClient>(); // <-- required
 
-```C#
-public class MySearchBackend : ISearchBackend 
-{
-    public class MySearchBackend() 
-    {
-    
-    }
-
-    public DefaultResponse ParseData(string pageContent, int maxResults)
-    {
-        // DefaultResponse will be returned on DefaultSearchClient.SearchAsync method
-        throw new NotImplementedException();
-    }
-
-    public async Task<string> RequestDataAsync(HttpClient httpClient, string query, int retry = 3, Dictionary<string, object> extras = null)
-    {
-        // return a string pageContent, for ParseData function
-        throw new NotImplementedException();
-    }
-}
-```
-
-Use it with `DefaultSearchClient`:
-```C#
-var client = new DefaultSearchClient(new MySearchBackend());
-```
-
-Create a response object:
-```C#
-public class MyBackendResult : IResponseResult
-{
-    public string Url { get; }
-
-    public string Title { get; }
-
-    public string Query { get; }
-
-    public string Description { get; }
-
-    public MyBackendResult(string url, string title, string query, string description)
-    {
-        Url = url;
-        Title = title;
-        Query = query;
-        Description = description;
-    }
-}
+services.AddSingleton<YoutubeSearchClient>();
+services.AddSingleton<YoutubeMusicSearchClient>();
 ```
 
 
 ## Code Review
-I tried implementing the Dependency Inversion Principle in this project. Code review would really help me out :]
+Code review would really help me out :]
 
 
 ## Contributing
