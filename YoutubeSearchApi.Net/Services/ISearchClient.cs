@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace YoutubeSearchApi.Net
+namespace YoutubeSearchApi.Net.Services
 {
     public interface ISearchClient<T>
     {
