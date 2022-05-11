@@ -1,29 +1,30 @@
-﻿namespace YoutubeSearchApi.Net.Models.Google;
-
-public class GoogleResult
+﻿namespace YoutubeSearchApi.Net.Models.Google
 {
-    public string Url { get; }
-
-    public string Title { get; }
-
-    public string Query { get; }
-
-    public string Description { get; }
-
-    public GoogleResult(string url, string title, string query, string description)
+    public class GoogleResult
     {
-        Url = url;
-        Title = title;
-        Query = query;
-        Description = description;
-    }
+        public string Url { get; }
 
-    public override string ToString()
-    {
-        return "GoogleSearchResult{" +
-            "\nUrl='" + Url + '\'' + ",\n" +
-            "Title='" + Title + '\'' + ",\n" +
-            "Description='" + Description + '\'' + ",\n" +
-            '}';
+        public string Title { get; }
+
+        public string Query { get; }
+
+        public string Description { get; }
+
+        public GoogleResult(string url, string title, string query, string description)
+        {
+            Url = url;
+            Title = title;
+            Query = query;
+            Description = description;
+        }
+
+        public override string ToString()
+        {
+            return "GoogleSearchResult{" +
+                "\nUrl='" + Url + '\'' + ",\n" +
+                "Title='" + Title + '\'' + ",\n" +
+                "Description='" + Description + '\'' + ",\n" +
+                '}';
+        }
     }
 }
