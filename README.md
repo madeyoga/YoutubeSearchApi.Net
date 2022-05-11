@@ -77,18 +77,21 @@ public static void Main(string[] args)
 
 ## Using Service Collection
 ```cs
-services.AddHttpClient<HttpClient>(); // <-- required
+services.AddYoutubeSearchClient();
+services.AddYoutubeMusicSearchClient();
 
-services.AddSingleton<YoutubeSearchClient>();
-services.AddSingleton<YoutubeMusicSearchClient>();
+
+// MyController.cs
+
+private readonly YoutubeSearchClient ytClient;
+private readonly YoutubeMusicSearchClient ytmClient;
+
+public MyController(YoutubeSearchClient ytClient, YoutubeMusicSearchClient ytmClient)
+{
+    this.ytClient = ytClient;
+    this.ytmClient = ytmClient;
+}
 ```
 
-
-## Code Review
-Code review would really help me out :]
-
-
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
+Pull requests are very welcome. Feel free to open a pull request.
