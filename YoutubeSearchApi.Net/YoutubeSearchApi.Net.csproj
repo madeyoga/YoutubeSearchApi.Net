@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Version>2021.8.24</Version>
+    <TargetFramework>net5.0</TargetFramework>
+    <Version>1.0.0</Version>
     <Description>A lightweight &amp; simple .NET library to extract data from Youtube or any sources</Description>
     <Authors>yeogaa</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -13,17 +13,19 @@
     <RepositoryUrl>https://github.com/madeyoga/YoutubeSearchApi.Net/tree/master</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>youtube-search,youtube-search-api</PackageTags>
-    <PackageReleaseNotes>- SearchAsync return DefaultResponse object
-- Add support for Google Search</PackageReleaseNotes>
+    <PackageReleaseNotes>- Remove Backends &amp; Objects &amp; Google Search
+- Add Services &amp; Models</PackageReleaseNotes>
     <Copyright>yeogaa</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <AssemblyVersion>2021.8.24</AssemblyVersion>
-    <FileVersion>2021.8.24</FileVersion>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
