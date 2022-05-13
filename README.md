@@ -77,8 +77,8 @@ public static void Main(string[] args)
 
 ## Using Service Collection
 ```cs
-services.AddYoutubeSearchClient();
-services.AddYoutubeMusicSearchClient();
+services.AddHttpClient<YoutubeSearchClient>();
+services.AddHttpClient<YoutubeMusicSearchClient>();
 
 
 // MyController.cs
@@ -94,4 +94,4 @@ public MyController(YoutubeSearchClient ytClient, YoutubeMusicSearchClient ytmCl
 ```
 
 ## Contributing
-Pull requests are very welcome. Feel free to open a pull request.
+Issues and Pull requests are very welcome. Feel free to open issues and pull requests.
