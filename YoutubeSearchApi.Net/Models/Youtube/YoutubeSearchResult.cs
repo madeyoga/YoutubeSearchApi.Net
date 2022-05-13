@@ -2,7 +2,6 @@
 
 namespace YoutubeSearchApi.Net.Models.Youtube
 {
-
     public class YoutubeSearchResult
     {
         public string Url { get; set; }
