@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <Version>1.0.0</Version>
+    <TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
+    <Version>1.1.1</Version>
     <Description>A lightweight &amp; simple .NET library to extract data from Youtube or any sources</Description>
     <Authors>yeogaa</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -12,15 +12,15 @@
     <PackageIcon></PackageIcon>
     <RepositoryUrl>https://github.com/madeyoga/YoutubeSearchApi.Net/tree/master</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>youtube-search,youtube-search-api</PackageTags>
-    <PackageReleaseNotes>- Remove Backends &amp; Objects &amp; Google Search
-- Add Services &amp; Models</PackageReleaseNotes>
+    <PackageTags>youtube,youtube-music,youtube-search,youtube-search-api,youtube-music-search</PackageTags>
+    <PackageReleaseNotes>multi target frameworks</PackageReleaseNotes>
     <Copyright>yeogaa</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <AssemblyVersion>1.0.0</AssemblyVersion>
-    <FileVersion>1.0.0</FileVersion>
+    <AssemblyVersion>1.1.1</AssemblyVersion>
+    <FileVersion>1.1.1</FileVersion>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,6 +33,10 @@
     <None Include="..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 

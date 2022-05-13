@@ -1,25 +1,29 @@
-﻿namespace YoutubeSearchApi.Net.Demo;
-
+﻿using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 using YoutubeSearchApi.Net.Models.Youtube;
 using YoutubeSearchApi.Net.Services;
 
-internal class YoutubeSearch_Demo
-{
-    public static async Task AsyncMain()
+namespace YoutubeSearchApi.Net.Demo
+{ 
+    internal class YoutubeSearch_Demo
     {
-        using (var httpClient = new HttpClient())
+        public static async Task AsyncMain()
         {
-            YoutubeSearchClient client = new YoutubeSearchClient(httpClient);
-
-            var responseObject = await client.SearchAsync("black suit");
-
-            foreach (YoutubeVideo video in responseObject.Results)
+            using (var httpClient = new HttpClient())
             {
-                Console.WriteLine(video.ToString());
-                Console.WriteLine("");
+                YoutubeSearchClient client = new YoutubeSearchClient(httpClient);
+
+                var responseObject = await client.SearchAsync("black suit");
+
+                foreach (YoutubeVideo video in responseObject.Results)
+                {
+                    Console.WriteLine(video.ToString());
+                    Console.WriteLine("");
+                }
             }
         }
-    }
 
-    public static void Main(string[] args) => AsyncMain().GetAwaiter().GetResult();
+        public static void Main(string[] args) => AsyncMain().GetAwaiter().GetResult();
+    }
 }
