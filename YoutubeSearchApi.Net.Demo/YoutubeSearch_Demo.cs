@@ -5,7 +5,7 @@ using YoutubeSearchApi.Net.Models.Youtube;
 using YoutubeSearchApi.Net.Services;
 
 namespace YoutubeSearchApi.Net.Demo
-{ 
+{
     internal class YoutubeSearch_Demo
     {
         public static async Task AsyncMain()
@@ -14,7 +14,7 @@ namespace YoutubeSearchApi.Net.Demo
             {
                 YoutubeSearchClient client = new YoutubeSearchClient(httpClient);
 
-                var responseObject = await client.SearchAsync("black suit");
+                var responseObject = await client.SearchAsync("search terms");
 
                 foreach (YoutubeVideo video in responseObject.Results)
                 {

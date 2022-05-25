@@ -43,7 +43,7 @@ namespace YoutubeSearchApi.Net.Demo
 
             protected override async Task ExecuteAsync(CancellationToken stoppingToken)
             {
-                var response = await ytClient.SearchAsync("ringtone");
+                var response = await ytClient.SearchAsync("search terms");
                 Console.WriteLine("YoutubeSearchClient Result:");
                 foreach (YoutubeVideo video in response.Results)
                 {
@@ -53,7 +53,7 @@ namespace YoutubeSearchApi.Net.Demo
 
                 Console.WriteLine("");
 
-                response = await ytmClient.SearchAsync("test ringtone");
+                response = await ytmClient.SearchAsync("search terms");
                 Console.WriteLine("YoutubeMusicSearchClient Result:");
                 foreach (YoutubeVideo video in response.Results)
                 {
