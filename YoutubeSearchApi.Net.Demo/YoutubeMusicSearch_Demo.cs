@@ -14,7 +14,7 @@ namespace YoutubeSearchApi.Net.Demo
             {
                 YoutubeMusicSearchClient client = new YoutubeMusicSearchClient(httpClient);
 
-                var responseObject = await client.SearchAsync("simple ringtone");
+                var responseObject = await client.SearchAsync("search terms");
 
                 foreach (YoutubeVideo video in responseObject.Results)
                 {
