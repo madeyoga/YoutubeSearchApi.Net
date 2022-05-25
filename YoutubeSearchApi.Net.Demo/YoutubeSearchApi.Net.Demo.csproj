@@ -9,10 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\YoutubeSearchApi.Net\YoutubeSearchApi.Net.csproj" />
+    <PackageReference Include="YoutubeSearchApi.Net" Version="1.1.1" />
   </ItemGroup>
 
 </Project>
